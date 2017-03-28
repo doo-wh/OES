@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>首页</title>
+
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/lib/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/lib/magic-check.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/lib/button.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/base.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/media.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/style.css">
+
+    <script src="<?= base_url() ?>/assets/js/lib/jquery.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/lib/bootstrap.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/lib/angular.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/lib/angular-route.min.js"></script>
+
+    <script src="<?= base_url() ?>/assets/js/boot.js"></script>
+    <script src="<?= base_url() ?>/assets/js/home.js"></script>
+</head>
+<body ng-app="oesModule">
+<div class="container-fluid">
+    <header class="row navbar-fixed-top" ng-controller="home-controller">
+        <!--开启导航按钮-->
+        <div id="bars"><i class="fa fa-bars"></i></div>
+        <!--mini导航-->
+        <div class="mini-nav">
+            <ul>
+                <li><a href="#/home">查快递</a></li>
+                <li><a href="#/send">寄快递</a></li>
+                <li><a href="#/company">快递公司查询</a></li>
+            </ul>
+        </div>
+
+        <div class="head-nav col-md-8 col-lg-8">
+            <div class="head-tab">
+                <span><i class="fa fa-leaf"></i></span>
+                <div ng-class="{selected:selectArr[0]}" ng-click="changeStyle(0)"><a href="#/home">查快递</a></div>
+                <div ng-class="{selected:selectArr[1]}" ng-click="changeStyle(1)"><a href="#/send">寄快递</a></div>
+                <div ng-class="{selected:selectArr[2]}" ng-click="changeStyle(2)"><a href="#/company">快递公司查询</a></div>
+            </div>
+        </div>
+        <div class="user-box col-md-4 col-lg-4">
+            <div class="index-btn-group">
+                <?php if ($user != null): ?>
+                    <a href="javascript:void(0)" ng-click="logOut()">退出</a>
+                    <div class="welcome">
+                        <span id="username" class="add-margin-right tooltip-test" data-toggle="tooltip" data-placement="bottom" title="点击显示导航"><i class="fa fa-user-circle add-margin-right"></i><?= $user ?></span>
+                        <span><i class="fa fa-bell-o"></i>3</span>
+                    </div>
+                <?php else: ?>
+                    <a href="<?= base_url() ?>/login">登录</a>
+                    <a href="<?= base_url() ?>/register">注册</a>
+                <?php endif; ?>
+            </div>
+        </div>
+    </header>
+
+    <!--左侧导航-->
+    <section>
+        <div class="side-bar">
+            <i class="fa fa-close"></i>
+            <a href="#" class="first-menu"><i class="fa fa-user-o add-margin-right"></i><span>个人中心</span></a>
+            <a href="#ordinary_user" class="collapsed nav-header first-menu" data-toggle="collapse">
+                <i class="fa fa-address-book add-margin-right"></i>
+                <span>普通用户管理</span>
+                <i class="fa fa-angle-double-down"></i>
+            </a>
+            <ul id="ordinary_user" class="nav nav-list collapse second-menu">
+                <li><a href="#"><i class="fa fa-list-alt add-margin-right"></i>用户列表</a></li>
+            </ul>
+            <a href="#company_user" class="collapsed nav-header first-menu" data-toggle="collapse">
+                <i class="fa fa-address-card-o add-margin-right"></i>
+                <span>企业用户管理</span>
+                <i class="fa fa-angle-double-down"></i>
+            </a>
+            <ul id="company_user" class="nav nav-list collapse second-menu">
+                <li><a href="#"><i class="fa fa-home add-margin-right"></i>新增企业</a></li>
+                <li><a href="#"><i class="fa fa-user-plus add-margin-right"></i>新增用户</a></li>
+                <li><a href="#"><i class="fa fa-list-alt add-margin-right"></i>用户列表</a></li>
+            </ul>
+            <a href="#system_user" class="collapsed nav-header first-menu" data-toggle="collapse">
+                <i class="fa fa-users add-margin-right"></i>
+                <span>系统用户管理</span>
+                <i class="fa fa-angle-double-down"></i>
+            </a>
+            <ul id="system_user" class="nav nav-list collapse second-menu">
+                <li><a href="#"><i class="fa fa-user-plus add-margin-right"></i>新增用户</a></li>
+                <li><a href="#"><i class="fa fa-list-alt add-margin-right"></i>用户列表</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <!--主体-->
+    <div class="content row" ng-view></div>
+
+    <!--底部-->
+    <footer class="navbar-fixed-bottom">
+        <div class="container-fluid">
+            <p>Copyright &copy; 2017 Wuhan Polytechnic University IMIS DongHuating.&nbsp;All rights reserved</p>
+        </div>
+    </footer>
+</div>
+</body>
+<script>
+    $(function () {
+        $('#username').click(function () {
+            $('.side-bar').slideToggle();
+        });
+    });
+
+    $('[data-toggle="tooltip"]').tooltip();
+</script>
+</html>

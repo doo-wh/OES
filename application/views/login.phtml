@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/lib/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/lib/font-awesome.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/lib/magic-check.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/lib/button.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/base.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/login_register.css">
+
+    <script src="<?= base_url() ?>/assets/js/lib/jquery.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/lib/bootstrap.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/lib/angular.min.js"></script>
+
+    <script src="<?= base_url() ?>/assets/js/boot.js"></script>
+    <script src="<?= base_url() ?>/assets/js/login_register.js"></script>
+
+    <title>登录</title>
+</head>
+<body class="login-register-bg" ng-app="loginModule">
+<div id="login-wrapper" class="login-register-wrapper" ng-controller="login-register-controller">
+    <p class="title"><i class="fa fa-leaf"></i><span>在线快递服务平台</span></p>
+    <form class="login-register-common">
+        <div>
+            <i class="fa fa-user-circle"></i>
+            <input class="inp-box" type="text" placeholder="用户名/手机号/邮箱" ng-model="reqData.name" ng-focus="errorMsg.isHide = true"/>
+        </div>
+        <div>
+            <i class="fa fa-key"></i>
+            <input class="inp-box" type="password" placeholder="密码" ng-model="reqData.password" ng-focus="errorMsg.isHide = true"/>
+        </div>
+        <div class="check-group">
+            <div>
+                <input class="magic-radio" type="radio" name="role" id="{{role[0]}}" ng-model="reqData.role"  value="{{role[0]}}"/>
+                <label for="{{role[0]}}">普通用户</label>
+            </div>
+
+            <div>
+                <input class="magic-radio" type="radio" name="role" id="{{role[1]}}"   ng-model="reqData.role" value="{{role[1]}}"/>
+                <label for=" {{role[1]}}">企业用户</label>
+            </div>
+
+            <div>
+                <input class="magic-radio" type="radio" name="role" id="{{role[2]}}" ng-model="reqData.role" value="{{role[2]}}"/>
+                <label for=" {{role[2]}}">系统用户</label>
+            </div>
+        </div>
+    </form>
+    <div id="login_btn" class="button button-primary button-block btn-common" ng-click="submit()">登录</div>
+    <p class="error-msg bg-warning text-danger ng-hide" ng-hide="errorMsg.isHide"><i class="fa fa-warning"></i><span>{{errorMsg.text}}</span></p>
+</div>
+</body>
+</html>

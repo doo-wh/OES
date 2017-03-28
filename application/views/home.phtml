@@ -1,0 +1,39 @@
+<!--搜索框-->
+<div class="search-box">
+    <input id="search-inp" type="text"/>
+    <div class="search-icon">
+        <i class="fa fa-search"></i>
+    </div>
+</div>
+<!--提示信息-->
+<div id="search-info" class="error-tips alert alert-warning">
+    <span><i class="fa fa-info-circle info-margin-right"></i>请输入快递单号</span>
+</div>
+<!--轮播图-->
+<div class="pic-box"></div>
+<!--网站通知-->
+<ul class="info-box list-group">
+    <li class="list-group-item active">重要通知<a id="more_url" href="#" class="pull-right">more<i class="fa fa-paper-plane"></i></a></li>
+    <li class="list-group-item">顺丰快递今日优惠<span class="badge" data-toggle="modal" data-target="#notice_index">查看</span></li>
+    <li class="list-group-item">天天杭州站快递因交通事故暂停服务<span class="badge" data-toggle="modal" data-target="#notice_index">查看</span></li>
+    <li class="list-group-item">圆通快递速度升级<span class="badge" data-toggle="modal" data-target="#notice_index">查看</span></li>
+</ul>
+<!-- 模态框-->
+<div class="modal fade " id="notice_index" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">
+                    顺丰快递今日优惠
+                </h5>
+            </div>
+            <div class="modal-body">
+                今日快递8折起，前100000名用户超重，每公斤减至3元。
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="button button-primary button-rounded" data-dismiss="modal">关闭
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

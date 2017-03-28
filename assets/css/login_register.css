@@ -1,0 +1,129 @@
+.login-register-bg {
+    background: #FAFAFA;
+}
+
+.login-register-wrapper {
+    margin: 5% auto;
+    max-width: 400px;
+}
+
+#login-wrapper {
+    margin-top: 10%;
+}
+.login-register-wrapper .title {
+    height: 60px;
+    text-align: center;
+    color: #006699;
+    font-size: 60px;
+    line-height: 60px;
+}
+
+.login-register-wrapper .title i {
+    margin-right: 20px;
+}
+
+.login-register-wrapper .title span {
+    font-size: 30px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#register_title {
+    font-size: 30px;
+}
+
+#register_title i {
+    font-size: 40px;
+    margin-right: 20px;
+}
+
+.login-register-common {
+    padding: 10px 20px 0;
+    margin: 0 auto;
+    color: #828282;
+    border-radius: 2px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+}
+
+.login-register-common > div {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.login-register-common i {
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+#register_form i {
+    text-align: center;
+    width: 20px;
+}
+
+#register_form div:nth-of-type(3) i {
+    font-size: 23px;
+}
+
+#register_form div:last-of-type {
+    margin-bottom: 10px;
+}
+
+#register_form input {
+    width: 88%;
+}
+
+.login-register-common .inp-box {
+    border: none;
+    outline: none;
+    width: 90%;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    padding: 15px 0 5px;
+    font-size: 16px;
+    border-bottom: 1px solid #d2d2d2;
+
+}
+
+.login-register-common .inp-box:hover {
+    border-bottom: 1px solid #2aabd2;
+}
+
+.login-register-common .check-group {
+    max-width: 90%;
+    height: 40px;
+    margin-top: 20px !important;
+    margin-left: 32px;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding-left: 0;
+}
+
+.login-register-common .check-group label {
+    padding-left: 24px;
+    font-weight: normal;
+}
+
+.login-register-wrapper .btn-common {
+    letter-spacing: 5px;
+    margin: 20px 0 10px;
+}
+
+.login-register-wrapper .error-msg {
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    position: relative;
+    border: 1px solid #F7C6A0;
+    border-radius: 2px;
+}
+
+.login-register-wrapper .error-msg i {
+    position: absolute;
+    left: 2%;
+    top: 30%;
+}
