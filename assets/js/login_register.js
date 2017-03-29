@@ -4,8 +4,8 @@
 
 (function () {
     'use strict';
-    var loginModule = angular.module('loginModule', []);
-    loginModule.controller('login-register-controller', function ($scope, $http, $location) {
+    var loginModule = angular.module('loginModule', ['ngDialog']);
+    loginModule.controller('login-register-controller', function ($scope, $http, $location, ngDialog) {
         /**
          *以下为登录操作
          */
@@ -21,6 +21,11 @@
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).then(function (res) {
                 if (res.data.state) {
+                    ngDialog.open({
+                        template: '<div>登录成功，即将跳转至首页</div>',
+                        plain: true,
+                        width: 300,
+                        height: 185});
                     var host = $location.host();
                     window.location.href = 'http://' + host;
                 } else {
@@ -28,7 +33,10 @@
                     $scope.errorMsg.isHide = false;
                 }
             }, function () {
-                alert('登录失败');
+                ngDialog.open({
+                    template: '<div>登录失败</div>',
+                    plain: true
+                });
             });
         };
 
