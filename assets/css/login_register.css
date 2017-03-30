@@ -8,7 +8,7 @@
 }
 
 #login-wrapper {
-    margin-top: 10%;
+    margin-top: 8%;
 }
 .login-register-wrapper .title {
     height: 60px;
@@ -74,32 +74,36 @@
 }
 
 .login-register-common .inp-box {
-    border: none;
-    outline: none;
     width: 90%;
     margin-left: 10px;
     margin-bottom: 5px;
     padding: 15px 0 5px;
-    font-size: 16px;
-    border-bottom: 1px solid #d2d2d2;
-
 }
 
-.login-register-common .inp-box:hover {
-    border-bottom: 1px solid #2aabd2;
+.login-register-common .inp-common {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    border-bottom: 2px solid #d2d2d2;
+}
+.login-register-common .inp-common:hover {
+    border-bottom: 2px solid #2aabd2;
 }
 
 .login-register-common .check-group {
     max-width: 90%;
     height: 40px;
+    padding-left: 0;
     margin-top: 20px !important;
     margin-left: 32px;
+    margin-bottom: 20px;
     display: flex;
     display: -webkit-flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
-    padding-left: 0;
+    border-bottom: 1px dashed #ccc;
+
 }
 
 .login-register-common .check-group label {
@@ -107,6 +111,18 @@
     font-weight: normal;
 }
 
+.login-register-common #code {
+    width: 90%;
+    margin-left: 32px;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+.login-register-common #code input {
+    width: 100px;
+    text-align: center;
+}
 .login-register-wrapper .btn-common {
     letter-spacing: 5px;
     margin: 20px 0 10px;

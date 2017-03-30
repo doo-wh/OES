@@ -10,7 +10,7 @@
          *以下为登录操作
          */
         $scope.role = ['ordinary', 'company', 'system'];
-        $scope.reqData = {"name": "", "password": "", "role": ""};
+        $scope.reqData = {"name": "", "password": "", "role": "","code" : ""};
         $scope.errorMsg = {isHide: true, text: ''};       //处理前端验证信息和服务器的返回信息
         $scope.submit = function () {
             var reqData = $.param($scope.reqData);

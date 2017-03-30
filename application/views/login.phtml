@@ -29,20 +29,20 @@
     <form class="login-register-common">
         <div>
             <i class="fa fa-user-circle"></i>
-            <input class="inp-box" type="text" placeholder="用户名/手机号/邮箱" ng-model="reqData.name" ng-focus="errorMsg.isHide = true"/>
+            <input class="inp-box inp-common" type="text" placeholder="用户名/手机号/邮箱" ng-model="reqData.name" ng-focus="errorMsg.isHide = true"/>
         </div>
         <div>
             <i class="fa fa-key"></i>
-            <input class="inp-box" type="password" placeholder="密码" ng-model="reqData.password" ng-focus="errorMsg.isHide = true"/>
+            <input class="inp-box inp-common" type="password" placeholder="密码" ng-model="reqData.password" ng-focus="errorMsg.isHide = true"/>
         </div>
         <div class="check-group">
             <div>
-                <input class="magic-radio" type="radio" name="role" id="{{role[0]}}" ng-model="reqData.role"  value="{{role[0]}}"/>
+                <input class="magic-radio" type="radio" name="role" id="{{role[0]}}" ng-model="reqData.role" value="{{role[0]}}"/>
                 <label for="{{role[0]}}">普通用户</label>
             </div>
 
             <div>
-                <input class="magic-radio" type="radio" name="role" id="{{role[1]}}"   ng-model="reqData.role" value="{{role[1]}}"/>
+                <input class="magic-radio" type="radio" name="role" id="{{role[1]}}" ng-model="reqData.role" value="{{role[1]}}"/>
                 <label for=" {{role[1]}}">企业用户</label>
             </div>
 
@@ -50,6 +50,10 @@
                 <input class="magic-radio" type="radio" name="role" id="{{role[2]}}" ng-model="reqData.role" value="{{role[2]}}"/>
                 <label for=" {{role[2]}}">系统用户</label>
             </div>
+        </div>
+        <div id="code">
+            <input class="inp-common" type="text" ng-model="reaData.code"/>
+            <img class="img-thumbnail" src="<?= base_url() ?>/code" alt="验证码">
         </div>
     </form>
     <div id="login_btn" class="button button-primary button-block btn-common" ng-click="submit()">登录</div>
