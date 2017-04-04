@@ -47,4 +47,11 @@ class Common_model extends CI_Model
     }
 
     /*查询多条*/
+    public function getMore($table, $id)
+    {
+        if (!empty($table) && !empty($id)) {
+            $query = $this->db->get_where($table, array('recipient_id' => $id));
+            return $query->result_array();
+        }
+    }
 }

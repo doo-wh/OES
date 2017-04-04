@@ -49,8 +49,8 @@
                 <?php if ($user != null): ?>
                     <a href="javascript:void(0)" ng-click="logOut()">退出</a>
                     <div class="welcome">
-                        <span id="username" class="add-margin-right tooltip-test" data-toggle="tooltip" data-placement="bottom" title="点击显示导航"><i class="fa fa-user-circle add-margin-right"></i><?= $user ?></span>
-                        <span><i class="fa fa-bell-o"></i>3</span>
+                        <span id="username" class="add-margin-right tooltip-test" data-toggle="tooltip" data-placement="bottom" title="点击显示导航"><i class="fa fa-user-circle add-margin-right"></i><?= $user['name'] ?></span>
+                        <span><i class="fa fa-bell-o"></i><?=$num?></span>
                     </div>
                 <?php else: ?>
                     <a href="<?= base_url() ?>/login">登录</a>

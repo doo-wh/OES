@@ -52,8 +52,8 @@
             </div>
         </div>
         <div id="code">
-            <input class="inp-common" type="text" ng-model="reaData.code"/>
-            <img class="img-thumbnail" src="<?= base_url() ?>/code" alt="验证码">
+            <input class="inp-common" type="text" ng-model="reqData.code" ng-focus="errorMsg.isHide = true"/>
+            <img class="img-thumbnail" src="<?= base_url() ?>/code?t=" + new Date().getTime() ng-click="updateCode($event)" alt="验证码">
         </div>
     </form>
     <div id="login_btn" class="button button-primary button-block btn-common" ng-click="submit()">登录</div>

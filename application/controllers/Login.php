@@ -38,12 +38,22 @@ class Login extends CI_Controller
             }
             $name = $_REQUEST['name'];
             $password = md5($_REQUEST['password']);
+            $code = $_SESSION['code'];
+            if( $_REQUEST['code'] != $code){
+                $arr = array('state' => false, 'msg' => '验证码不正确');
+                echo json_encode($arr);
+                exit();
+            }
             $data = array('name' => $name, 'password' => $password);
             $result = $this->user_model->login($table, $data);
-            if (!empty($result)) {
-                $this->session->set_userdata('user', $result);
-                $arr = array('state' => true);
-                echo json_encode($arr);
+            if($table == 'users'){
+                $message = $this->user_model->getMore($table,$result['id']);
+                $num = count($message);
+            }
+            if (!empty($result) && !empty($message)) {
+                $arr = array('user'=>$result,'num'=>$num);
+                $this->session->set_userdata($arr);
+                echo 'true';
             } else {
                 $arr = array('state' => false, 'msg' => '用户名和密码不匹配');
                 echo json_encode($arr);
@@ -55,7 +65,6 @@ class Login extends CI_Controller
     public function out()
     {
         $this->session->sess_destroy();
-        $arr = array('state' => true);
-        echo json_encode($arr);
+        echo 'true';
     }
 }

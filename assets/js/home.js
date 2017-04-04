@@ -11,7 +11,7 @@
                 method: 'GET',
                 url: '/login/out'
             }).then(function (res) {
-                if (res.data.state) {
+                if (res.data === 'true') {
                     var host = $location.host();
                     window.location.href = 'http://' + host;
                 } else {

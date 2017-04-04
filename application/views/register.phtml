@@ -9,12 +9,16 @@
     <link rel="stylesheet" href="<?= base_url() ?>/assets/css/lib/font-awesome.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>/assets/css/lib/magic-check.css">
     <link rel="stylesheet" href="<?= base_url() ?>/assets/css/lib/button.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/lib/ngDialog.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/lib/ngDialog-theme-default.css">
     <link rel="stylesheet" href="<?= base_url() ?>/assets/css/base.css">
     <link rel="stylesheet" href="<?= base_url() ?>/assets/css/login_register.css">
 
     <script src="<?= base_url() ?>/assets/js/lib/jquery.min.js"></script>
     <script src="<?= base_url() ?>/assets/js/lib/bootstrap.min.js"></script>
     <script src="<?= base_url() ?>/assets/js/lib/angular.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/lib/ngDialog.min.js"></script>
+
 
     <script src="<?= base_url() ?>/assets/js/boot.js"></script>
     <script src="<?= base_url() ?>/assets/js/login_register.js"></script>
@@ -27,23 +31,23 @@
     <form id="register_form" class="login-register-common">
         <div>
             <i class="fa fa-user-o"></i>
-            <input class="inp-box" type="text" name="name" placeholder="用户名" ng-model="userMsg.name"/>
+            <input class="inp-box inp-common" type="text" name="name" placeholder="用户名" ng-model="userMsg.name" ng-focus="errorMsg.isHide = true"/>
         </div>
         <div>
             <i class="fa fa-key"></i>
-            <input class="inp-box" type="password" name="password" placeholder="密码" ng-model="userMsg.password"/>
+            <input class="inp-box inp-common" type="password" name="password" placeholder="密码长度不低于6位" ng-model="userMsg.password" ng-focus="errorMsg.isHide = true"/>
         </div>
         <div>
             <i class="fa fa-mobile-phone"></i>
-            <input class="inp-box" type="text" name="phone" placeholder="手机号" ng-model="userMsg.phone"/>
+            <input class="inp-box inp-common" type="number" name="phone" placeholder="手机号" ng-model="userMsg.phone" ng-focus="errorMsg.isHide = true"/>
         </div>
         <div>
             <i class="fa fa-envelope-o"></i>
-            <input class="inp-box" type="email" name="emai" placeholder="邮箱" ng-model="userMsg.email"/>
+            <input class="inp-box inp-common" type="email" name="emai" placeholder="邮箱" ng-model="userMsg.email" ng-focus="errorMsg.isHide = true"/>
         </div>
     </form>
     <div id="register_btn" class="button button-block button-primary  btn-common" ng-click="register()">注册</div>
-    <p class="error-msg bg-warning text-danger"><i class="fa fa-warning"></i><span>11</span></p>
+    <p class="error-msg bg-warning text-danger ng-hide" ng-hide="errorMsg.isHide"><i class="fa fa-warning"></i><span>{{errorMsg.text}}</span></p>
 </div>
 </body>
 </html>

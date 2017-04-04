@@ -6,7 +6,7 @@
     oesModule.config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/home', {
-                templateUrl:'index.php/home/index'
+                templateUrl: 'index.php/home/index'
             })
             .when('/company', {
                 templateUrl: 'index.php/company/index'

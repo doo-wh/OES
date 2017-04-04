@@ -11,7 +11,8 @@ class User_model extends Common_model
     public function login($table,$data)
     {
         $query = $this->db->get_where($table,array('name'=>$data['name'],'password'=>$data['password']),1);
-        $result = $query->row_array();
-        return $result['name'];
+        return $query->row_array();
     }
+
+
 }
