@@ -1,0 +1,21 @@
+<section id="record_wrapper">
+    <form>
+        <div class="error-tips alert alert-warning" ng-hide="errorMsg.isHide">
+            <span><i class="fa fa-info-circle info-margin-right"></i>{{errorMsg.text}}</span>
+        </div>
+        <div class="input-group add-div-margin">
+            <span class="input-group-addon change-default">快递单号</span>
+            <input type="text" class="form-control change-default" ng-model="record.express_code">
+        </div>
+        <div class="input-group add-div-margin">
+            <span class="input-group-addon change-default">站点名称</span>
+            <input type="text" class="form-control change-default" ng-model="record.site">
+        </div>
+        <div class="input-group add-div-margin">
+            <span class="input-group-addon change-default">备注信息</span>
+            <input type="text" class="form-control change-default"  ng-model="record.remarks">
+        </div>
+    </form>
+    <div class="button button-block button-rounded button-primary button-margin" ng-click="submitRecord()">提交</div>
+    <div class="button button-block button-rounded button-highlight button-margin-small">重置</div>
+</section>

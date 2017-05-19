@@ -1,25 +1,58 @@
 <section id="center_wrapper">
     <form id="user_center">
-        <div class="error-tips alert alert-warning">
-            <span><i class="fa fa-info-circle info-margin-right"></i>密码错误</span>
+        <div class="error-tips alert alert-warning" ng-hide="errorMsg.isHide">
+            <span><i class="fa fa-info-circle info-margin-right"></i>{{errorMsg.text}}</span>
         </div>
-        <div class="input-group add-div-margin">
-            <span class="input-group-addon change-default">用户名</span>
-            <input type="text" class="form-control change-default" disabled>
-        </div>
-        <div class="input-group add-div-margin">
-            <span class="input-group-addon change-default">密&nbsp;&nbsp;&nbsp;码</span>
-            <input type="password" class="form-control change-default">
-        </div>
-        <div class="input-group add-div-margin">
-            <span class="input-group-addon change-default">邮&nbsp;&nbsp;&nbsp;箱</span>
-            <input type="email" class="form-control change-default">
-        </div>
-        <div class="input-group add-div-margin">
-            <span class="input-group-addon change-default">手机号</span>
-            <input type="text" class="form-control change-default">
-        </div>
+        <?php if ($power == 1): ?>
+            <div class="input-group add-div-margin">
+                <input type="hidden" ng-init="user.id = '<?= $user['id'] ?>'" ng-model="user.id">
+                <span class="input-group-addon change-default">用户名</span>
+                <input id="username" type="text" class="form-control change-default" disabled value="<?= $user['name'] ?>">
+            </div>
+            <div class="input-group add-div-margin">
+                <span class="input-group-addon change-default">密&nbsp;&nbsp;&nbsp;码</span>
+                <input id="pwd" type="password" class="form-control change-default" ng-model="user.password">
+            </div>
+            <div class="input-group add-div-margin">
+                <span class="input-group-addon change-default">邮&nbsp;&nbsp;&nbsp;箱</span>
+                <input id="email" type="email" class="form-control change-default" ng-init="user.email = '<?= $user['email'] ?>'" ng-model="user.email">
+            </div>
+            <div class="input-group add-div-margin">
+                <span class="input-group-addon change-default">手机号</span>
+                <input id="phone" type="text" class="form-control change-default" ng-init="user.phone = '<?= $user['phone'] ?>'" ng-model="user.phone">
+            </div>
+            <div class="button button-block button-rounded button-primary button-margin" ng-click="submitPersonal(1)">提交</div>
+        <?php elseif ($power == 2): ?>
+            <div class="input-group add-div-margin">
+                <input type="hidden" ng-init="userCompany.id = '<?= $user['id'] ?>'" ng-model="userCompany.id">
+                <span class="input-group-addon change-default">用户名</span>
+                <input type="text" class="form-control change-default" disabled value="<?= $user['name'] ?>">
+            </div>
+            <div class="input-group add-div-margin">
+                <span class="input-group-addon change-default">密&nbsp;&nbsp;&nbsp;码</span>
+                <input type="password" class="form-control change-default" ng-model="userCompany.password">
+            </div>
+            <div class="input-group add-div-margin">
+                <span class="input-group-addon change-default">手机号</span>
+                <input type="text" class="form-control change-default" ng-init="userCompany.phone = '<?= $user['phone'] ?>'" ng-model="userCompany.phone">
+            </div>
+            <div class="input-group add-div-margin">
+                <span class="input-group-addon change-default">单&nbsp;&nbsp;&nbsp;位</span>
+                <input type="text" class="form-control change-default" disabled ng-init="userCompany.company = '<?= $user['company'] ?>'" ng-model="userCompany.company">
+            </div>
+            <div class="button button-block button-rounded button-primary button-margin" ng-click="submitPersonal(2)">提交</div>
+        <?php elseif ($power == 3): ?>
+            <div class="input-group add-div-margin">
+                <input type="hidden" ng-init="userSystem.id = '<?= $user['id'] ?>'" ng-model="userSystem.id">
+                <input type="hidden" ng-init="userSystem.power = '<?= $power ?>'" ng-model="userSystem.power">
+                <span class="input-group-addon change-default">用户名</span>
+                <input type="text" class="form-control change-default" disabled value="<?= $user['name'] ?>">
+            </div>
+            <div class="input-group add-div-margin">
+                <span class="input-group-addon change-default">密&nbsp;&nbsp;&nbsp;码</span>
+                <input type="password" class="form-control change-default" ng-model="userSystem.password">
+            </div>
+            <div class="button button-block button-rounded button-primary button-margin" ng-click="submitPersonal(3)">提交</div>
+        <?php endif; ?>
     </form>
-    <div class="button button-block button-rounded button-primary button-margin">提交</div>
-    <div class="button button-block button-rounded button-highlight button-margin-small">重置</div>
 </section>

@@ -31,12 +31,10 @@
                     data: reqData,
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 }).then(function (res) {
-                    if (res.data === 'true') {
+                    if (res.data.state) {
                         ngDialog.open({
                             template: '<div>登录成功，即将跳转至首页</div>',
-                            plain: true,
-                            width: 300,
-                            height: 100
+                            plain: true
                         });
                         window.location.href = 'http://' + host;
                     } else {
@@ -71,9 +69,7 @@
                     if (res.data === 'true') {
                         ngDialog.open({
                             template: '<div>注册成功，即将跳转至登录页面</div>',
-                            plain: true,
-                            width: 300,
-                            height: 100
+                            plain: true
                         });
                         window.location.href = 'http://' + host + '/login';
                     } else {
@@ -81,7 +77,10 @@
                         $scope.errorMsg.isHide = false;
                     }
                 }, function () {
-                    alert('注册请求失败');
+                    ngDialog.open({
+                        template: '<div>注册请求出现错误</div>',
+                        plain: true
+                    });
                 });
             }
         };

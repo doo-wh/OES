@@ -13,9 +13,6 @@ class Common_model extends CI_Model
     {
         if (!empty($table) && !empty($data)) {
             $this->db->insert($table, $data);
-            echo 'true';
-        } else {
-            echo '数据存储失败!';
         }
     }
 
@@ -24,8 +21,6 @@ class Common_model extends CI_Model
     {
         if (!empty($table) && !empty($id)) {
             $this->db->update($table, array('deleted' => '1'), "id = $id");
-        } else {
-            echo '删除数据失败!';
         }
     }
 
@@ -43,15 +38,6 @@ class Common_model extends CI_Model
         if (!empty($table) && !empty($id)) {
             $query = $this->db->get_where($table, array('id' => $id), 1);
             return $query->row_array();
-        }
-    }
-
-    /*查询多条*/
-    public function getMore($table, $id)
-    {
-        if (!empty($table) && !empty($id)) {
-            $query = $this->db->get_where($table, array('recipient_id' => $id));
-            return $query->result_array();
         }
     }
 }

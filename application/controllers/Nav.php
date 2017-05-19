@@ -12,8 +12,12 @@ class Nav extends CI_Controller
         parent::__construct();
         $this->load->model('user_model');
     }
-    public function index(){
+
+    public function index()
+    {
         $user = $this->session->userdata('user');
-        $this->load->view('nav.phtml',array('user'=>$user));
+        $num = $this->session->userdata('num');
+        $power = $this->session->userdata('power');
+        $this->load->view('nav.phtml', array('user' => $user, 'num' => $num, 'power' => $power));
     }
 }

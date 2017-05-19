@@ -3,31 +3,22 @@
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="form-group add-div-margin">
                 <span>公司名称</span>
-                <input type="text" class="form-control" placeholder="">
+                <input type="text" class="form-control" ng-model="companyMsg.name">
             </div>
             <div class="form-group add-div-margin">
                 <span>所在地址</span>
-                <input type="password" class="form-control" placeholder="">
+                <input type="text" class="form-control" ng-model="companyMsg.address">
             </div>
             <div class="form-group add-div-margin">
                 <span>联系电话</span>
-                <input type="text" class="form-control" placeholder="">
-            </div>
-            <div class="error-tips alert alert-warning">
-                <span><i class="fa fa-info-circle info-margin-right"></i>信息不能有空</span>
-            </div>
-            <div class="button button-royal button-rounded button-margin pull-right">
-                <i class="fa fa-folder-open-o"></i>
-                <span>批量导入</span>
+                <input type="text" class="form-control" ng-model="companyMsg.telephone">
             </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="form-group add-div-margin">
-                <span>公司简介</span><span>20/200</span>
-                <textarea name="" id="" rows="10" class="form-control"></textarea>
+                <textarea rows="10" class="form-control" ng-model="companyMsg.introduction"></textarea>
             </div>
-            <div class="button button-primary button-rounded button-margin pull-right">提交</div>
-            <div id="cancle_c" class="button button-highlight button-rounded button-margin pull-right">重置</div>
+            <div class="button button-primary button-rounded button-margin pull-right" ng-click="submitCompany()">提交</div>
         </div>
     </form>
 </section>

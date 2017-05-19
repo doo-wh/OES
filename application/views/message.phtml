@@ -2,75 +2,34 @@
     <div class="panel panel-primary">
         <div class="panel-heading">您的消息列表</div>
         <table class="table">
-            <tr>
-                <td>2017-03-15 12:00:00</td>
-                <td>系统消息<span class="badge">未读</span></td>
-                <td class="view" data-toggle="modal" data-target="#message">查看<i class="fa fa-envelope-open-o"></i></td>
-                <td><i class="fa fa-close delete-style"></i></td>
-            </tr>
-            <tr>
-                <td>2017-03-15 12:00:00</td>
-                <td>系统消息<span class="badge">未读</span></td>
-                <td class="view" data-toggle="modal" data-target="#message">查看<i class="fa fa-envelope-open-o"></i></td>
-                <td><i class="fa fa-close delete-style"></i></td>
-            </tr>
-            <tr>
-                <td>2017-03-15 12:00:00</td>
-                <td>系统消息<span class="badge">未读</span></td>
-                <td class="view" data-toggle="modal" data-target="#message">查看<i class="fa fa-envelope-open-o"></i></td>
-                <td><i class="fa fa-close delete-style"></i></td>
-            </tr>
-            <tr>
-                <td>2017-03-15 12:00:00</td>
-                <td>系统消息<span class="badge">未读</span></td>
-                <td class="view" data-toggle="modal" data-target="#message">查看<i class="fa fa-envelope-open-o"></i></td>
-                <td><i class="fa fa-close delete-style"></i></td>
-            </tr>
-            <tr>
-                <td>2017-03-15 12:00:00</td>
-                <td>系统消息<span class="badge">未读</span></td>
-                <td class="view" data-toggle="modal" data-target="#message">查看<i class="fa fa-envelope-open-o"></i></td>
-                <td><i class="fa fa-close delete-style"></i></td>
-            </tr>
-            <tr>
-                <td>2017-03-15 12:00:00</td>
-                <td>系统消息<span class="badge">未读</span></td>
-                <td class="view" data-toggle="modal" data-target="#message">查看<i class="fa fa-envelope-open-o"></i></td>
-                <td><i class="fa fa-close delete-style"></i></td>
-            </tr>
-            <tr>
-                <td>2017-03-15 12:00:00</td>
-                <td>系统消息<span class="badge">未读</span></td>
-                <td class="view" data-toggle="modal" data-target="#message">查看<i class="fa fa-envelope-open-o"></i></td>
-                <td><i class="fa fa-close delete-style"></i></td>
-            </tr>
-            <tr>
-                <td>2017-03-15 12:00:00</td>
-                <td>系统消息<span class="badge">未读</span></td>
-                <td class="view" data-toggle="modal" data-target="#message">查看<i class="fa fa-envelope-open-o"></i></td>
-                <td><i class="fa fa-close delete-style"></i></td>
+            <tr ng-repeat="msg in messageList">
+                <td>{{msg.create_time}}</td>
+                <td>{{msg.content|limitTo:10}}……<span class="badge badge-red" ng-show="msg.viewed == 0">未读</span><span class="badge" ng-show="msg.viewed == 1">已读</span></td>
+                <td class="view" data-toggle="modal" data-target="#message"><span ng-click="readMsg($index)">查看</span><i class="fa fa-envelope-open-o"></i></td>
+                <td><i class="fa fa-close delete-style" ng-click="deleteMsg($index)"></i></td>
             </tr>
         </table>
     </div>
-    <nav aria-label="...">
-        <ul class="pager">
-            <li><a href="#">上一页</a></li>
-            <li><a href="#">下一页</a></li>
+    <div class="page-box">
+        <ul>
+            <li class="page-common" ng-click="previousPage()">上一页</li>
+            <li class="page-common" ng-click="nextPage()">下一页</li>
         </ul>
-    </nav>
-
+        <div class="pull-right">
+            <input class="page-text" type="text" ng-model="page">
+            <span class="go-page-common page-margin" ng-click="goPageList()">GO</span>
+            <span class="total-color page-margin">当前页:{{currentPage}}</span>
+            <span class="total-color">共{{totalPage}}页</span>
+        </div>
+    </div>
     <!--modal(模态框)-->
     <div class="modal fade bs-example-modal-xm" id="message" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">
-                        系统消息
-                    </h4>
+                    <h4 class="modal-title" id="myModalLabel">{{title}}</h4>
                 </div>
-                <div class="modal-body">
-                    您的快递在2017-03-14 12：19到达 杭州站
-                </div>
+                <div class="modal-body">{{content}}</div>
                 <div class="modal-footer">
                     <button type="button" class="button button-rounded button-primary" data-dismiss="modal">关闭</button>
                 </div>

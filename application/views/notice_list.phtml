@@ -1,0 +1,85 @@
+<section class="list-wrapper list-style ">
+    <table id="list_notice" class="table table-striped table-responsive list-style">
+        <thead>
+        <tr class="tr-style">
+            <td>标题</td>
+            <td>时间</td>
+            <td>创建者</td>
+            <td>操作</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="list in noticeList">
+            <td>{{list.title}}</td>
+            <td>{{list.create_time}}</td>
+            <td>{{list.creator}}</td>
+            <?php if (isset($_SESSION['power']) && $_SESSION['power'] == 3):?>
+                <td><span class="edit-color" data-toggle="modal" data-target="#view_notice" ng-click="view($index)">查看</span><span ng-click="update($index)" class="edit-color" data-toggle="modal" data-target="#edit_notice">修改</span><i class="fa fa-close delete-style" ng-click="delete($index)"></i></td>
+            <?php else:?>
+                <td><span class="edit-color" data-toggle="modal" data-target="#view_notice" ng-click="view($index)" style="margin-right: 0;">查看</span></td>
+            <?php endif;?>
+        </tr>
+        </tbody>
+    </table>
+    <div class="page-box add-page-box-margin">
+        <div class="page-search-box">
+            <ul>
+                <li class="page-common" ng-click="previousPage()">上一页</li>
+                <li class="page-common" ng-click="nextPage()">下一页</li>
+            </ul>
+            <div class="list-search"><input type="text" ng-model="keywords" placeholder="按标题搜索"/><i class="fa fa-search" ng-click="search()"></i></div>
+        </div>
+        <div>
+            <input class="page-text" type="text" ng-model="page">
+            <span class="go-page-common page-margin" ng-click="goPageList()">GO</span>
+            <span class="total-color page-margin">当前页:{{currentPage}}</span>
+            <span class="total-color">共{{totalPage}}页</span>
+        </div>
+    </div>
+    <div class="modal fade " id="view_notice" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">{{noticeList[viewId].title}}</h5>
+                </div>
+                <div class="modal-body">{{noticeList[viewId].content}}</div>
+                <div class="modal-footer">
+                    <button type="button" class="button button-primary button-rounded" data-dismiss="modal">关闭
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="edit_notice" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>标题</label>
+                        <input type="text" class="form-control" ng-model="noticeMsg.title">
+                    </div>
+                    <div class="form-group">
+                        <label>内容</label>
+                        <textarea class="form-control" rows="5" ng-model="noticeMsg.content"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" ng-click="submitNotice()">提交更改</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <div id="confirm_modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body">确定删除该公告吗？</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" ng-click="confirmFn()">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,55 +1,14 @@
 <section id="logistics_wrapper">
-    <p class="remove-pad-lf">快递编号：<span>884392955980302108</span></p>
-    <p class="remove-pad-lf">快递公司：<span>圆通快递</span></p>
+    <p class="remove-pad-lf">快递编号：<span>{{express[0].expressCode}}</span></p>
+    <p class="remove-pad-lf">快递公司：<span>{{express[0].company}}</span></p>
     <ul>
         <li class="col-lg-3 col-md-3 col-sm-3 col-xs-3 remove-pad-lf">时间</li>
-        <li class="col-lg-3 col-md-3 col-sm-3 col-xs-3"><i class="fa fa-truck"></i>站点</li>
-        <li class="col-lg-2 col-md-2 col-sm-2 col-xs-2">投递员/派件人</li>
-        <li class="col-lg-2 col-md-2 col-sm-2 col-xs-2">联系方式</li>
-        <li class="col-lg-2 col-md-2 col-sm-2 col-xs-2 remove-pad-rg">备注</li>
+        <li class="col-lg-9 col-md-9 col-sm-9 col-xs-9"><i class="fa fa-truck"></i>站点</li>
     </ul>
     <table>
-        <tr>
-            <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 remove-pad-lf">2017-03-12 12:00</td>
-            <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 add-padding-lf"><i class="fa fa-circle transport"></i>杭州</td>
-            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">东某某</td>
-            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">13071292423</td>
-            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2 remove-pad-rg">已收揽</td>
-        </tr>
-        <tr>
-            <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 remove-pad-lf">2017-03-12 12:00</td>
-            <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 add-padding-lf"><i class="fa fa-circle transport"></i>杭州</td>
-            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">东某某</td>
-            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">13071292423</td>
-            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2 remove-pad-rg">已收揽</td>
-        </tr>
-        <tr>
-            <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 remove-pad-lf">2017-03-12 12:00</td>
-            <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 add-padding-lf"><i class="fa fa-circle transport"></i>杭州</td>
-            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">东某某</td>
-            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">13071292423</td>
-            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2 remove-pad-rg">已收揽</td>
-        </tr>
-        <tr>
-            <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 remove-pad-lf">2017-03-12 12:00</td>
-            <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 add-padding-lf"><i class="fa fa-circle transport"></i>杭州</td>
-            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">东某某</td>
-            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">13071292423</td>
-            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2 remove-pad-rg">已收揽</td>
-        </tr>
-        <tr>
-            <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 remove-pad-lf">2017-03-12 12:00</td>
-            <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 add-padding-lf"><i class="fa fa-circle transport"></i>杭州</td>
-            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">东某某</td>
-            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">13071292423</td>
-            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2 remove-pad-rg">已收揽</td>
-        </tr>
-        <tr>
-            <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 remove-pad-lf">2017-03-12 12:00</td>
-            <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 add-padding-lf"><i class="fa fa-circle transport"></i>杭州</td>
-            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">东某某</td>
-            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">13071292423</td>
-            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2 remove-pad-rg">已收揽</td>
+        <tr ng-repeat="list in express">
+            <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 remove-pad-lf">{{list.time}}</td>
+            <td class="col-lg-9 col-md-9 col-sm-9 col-xs-9 add-padding-lf"><i class="fa fa-circle transport"></i>{{list.site}}，{{list.username}}（{{list.phone}}），{{list.remarks}}</td>
         </tr>
     </table>
 </section>

@@ -4,51 +4,44 @@
         <tr class="tr-style">
             <td>用户名</td>
             <td>备注</td>
+            <td>操作</td>
         </tr>
         </thead>
-        <tbody>
-        <tr>
-            <td>动画听</td>
-            <td>物流部经理</td>
-        </tr>
-        <tr>
-            <td>忽悠为</td>
-            <td>物流部经理</td>
-        </tr>
-        <tr>
-            <td>东西南北</td>
-            <td>物流部总经理</td>
-        </tr>
-        <tr>
-            <td>哈哈哈</td>
-            <td>物流部总经理</td>
-        </tr>
-        <tr>
-            <td>慕容负性木木真</td>
-            <td>物流部总经理</td>
-        </tr>
-        <tr>
-            <td>用户名</td>
-            <td>物流部副总经理</td>
-        </tr>
-        <tr>
-            <td>用户名</td>
-            <td>物流部副总经理</td>
-        </tr>
-        <tr>
-            <td>用户名</td>
-            <td>物流部副总经理</td>
+        <tbody data-sessionId = "<?=$_SESSION['user']['id']?>">
+        <tr ng-repeat="list in userList">
+            <td>{{list.name}}</td>
+            <td>{{list.remarks}}</td>
+            <td><i class="fa fa-close delete-style" ng-click="delete($index)" ng-show="list.id != sessionId"></i></td>
         </tr>
         </tbody>
     </table>
-    <ul class="paging">
-        <li class="page pull-left s-color direction">&laquo;</li>
-        <li class="page s-color s-border pull-left">1</li>
-        <li class="page s-color s-border pull-left">2</li>
-        <li class="page s-color s-border pull-left cur-page-s">3</li>
-        <li class="page s-color s-border pull-left">4</li>
-        <li class="page s-color s-border pull-left">5</li>
-        <li class="page pull-left s-color direction">&raquo;</li>
-    </ul>
-    <span class="s-color pull-right">共13页</span>
+    <div class="page-box add-page-box-margin">
+        <div class="page-search-box">
+            <ul>
+                <li class="page-common" ng-click="previousPage()">上一页</li>
+                <li class="page-common" ng-click="nextPage()">下一页</li>
+            </ul>
+            <div class="list-search"><input type="text" ng-model="keywords" placeholder="按用户名搜索"/><i class="fa fa-search" ng-click="search()"></i></div>
+        </div>
+        <div>
+            <input class="page-text" type="text" ng-model="page">
+            <span class="go-page-common page-margin" ng-click="goPageList()">GO</span>
+            <span class="total-color page-margin">当前页:{{currentPage}}</span>
+            <span class="total-color">共{{totalPage}}页</span>
+        </div>
+    </div>
+    <!--    模态框-->
+    <div id="confirm_modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    确定删除该用户吗？
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" ng-click="confirmFn()">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>

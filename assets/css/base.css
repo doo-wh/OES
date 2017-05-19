@@ -116,7 +116,7 @@ header .head-tab {
 }
 
 .welcome {
-    width: 115px;
+    width: auto;
     height: 36px;
     line-height: 36px;
     margin-left: 10px;
@@ -132,26 +132,34 @@ header .head-tab {
 }
 
 .side-bar {
-    display: none;
+    display: block;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1040;
-    background: rgba(0, 0, 0, 0.8);
     width: 230px;
     height: 100%;
+    transform: translate(-230px, 0);
+    transition: transform .3s;
+    background: rgba(0, 0, 0, 0.8);
 }
 
-.side-bar>i {
+.show-nav {
+    transform: translate(0, 0);
+}
+
+.side-bar > i {
     color: #fff;
     float: right;
     margin-top: 5px;
     margin-right: 5px;
     cursor: pointer;
 }
-.side-bar>i:hover{
+
+.side-bar > i:hover {
     color: #FF7800;
 }
+
 .first-menu {
     width: 100% !important;
     height: 50px !important;
@@ -159,6 +167,7 @@ header .head-tab {
     line-height: 50px;
     text-align: center;
     font-size: 16px;
+    color: #fff;
     letter-spacing: 1px;
     cursor: pointer;
 }
@@ -183,13 +192,15 @@ header .head-tab {
     transform: rotate(-90deg);
 }
 
-.second-menu li a {
+.second-menu li {
+    color: #fff;
     text-align: center;
+    cursor: pointer;
+    margin-bottom: 20px;
 }
 
-.second-menu li a:hover {
+.second-menu li:hover {
     color: #FF7800;
-    background: transparent;
 }
 
 .content {
@@ -208,4 +219,64 @@ footer div {
 footer p {
     color: #999;
     font-size: 13px;
+}
+
+.page-box {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.page-box ul {
+    display: inline-block;
+    padding-left: 0;
+}
+
+.page-text {
+    width: 40px;
+    height: 20px;
+    text-align: center;
+}
+
+.page-common {
+    list-style: none;
+    display: inline;
+    width: auto;
+    height: auto;
+    padding: 3px 15px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.go-page-common {
+    color: #fff;
+    width: 40px;
+    height: 20px;
+    border-radius: 10px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.page-margin {
+    margin-right: 10px;
+}
+
+.add-page-box-margin {
+    margin-top: 10px;
+}
+
+.list-search {
+    display: inline-block;
+}
+
+.page-search-box i{
+    margin-left: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.page-search-box i:hover{
+    font-size: 20px;
+    color: #009999;
 }

@@ -1,4 +1,4 @@
-<section class="list-wrapper list-style ">
+<section class="list-wrapper list-style">
     <table id="list_user_c" class="table table-striped table-responsive ">
         <thead>
         <tr class="tr-style">
@@ -6,76 +6,69 @@
             <td>手机号</td>
             <td>所属公司</td>
             <td>角色</td>
-            <td>删除</td>
+            <td>操作</td>
         </tr>
         </thead>
-        <tbody>
-        <tr>
-            <td>用户名</td>
-            <td>13071292423</td>
-            <td>湖北省武汉市北京斯托赫中科技有限公司</td>
-            <td>普通员工</td>
-            <td><i class="fa fa-close delete-style"></i></td>
-        </tr>
-        <tr>
-            <td>用户名</td>
-            <td>13071292423</td>
-            <td>湖北省武汉市北京斯托赫中科技有限公司</td>
-            <td>普通员工</td>
-            <td><i class="fa fa-close delete-style"></i></td>
-        </tr>
-        <tr>
-            <td>用户名</td>
-            <td>13071292423</td>
-            <td>湖北省武汉市北京斯托赫中科技有限公司</td>
-            <td>公司管理员</td>
-            <td><i class="fa fa-close delete-style"></i></td>
-        </tr>
-        <tr>
-            <td>用户名</td>
-            <td>13071292423</td>
-            <td>湖北省武汉市北京斯托赫中科技有限公司</td>
-            <td>普通员工</td>
-            <td><i class="fa fa-close delete-style"></i></td>
-        </tr>
-        <tr>
-            <td>用户名</td>
-            <td>13071292423</td>
-            <td>湖北省武汉市北京斯托赫中科技有限公司</td>
-            <td>公司管理员</td>
-            <td><i class="fa fa-close delete-style"></i></td>
-        </tr>
-        <tr>
-            <td>用户名</td>
-            <td>13071292423</td>
-            <td>湖北省武汉市北京斯托赫中科技有限公司</td>
-            <td>公司管理员</td>
-            <td><i class="fa fa-close delete-style"></i></td>
-        </tr>
-        <tr>
-            <td>用户名</td>
-            <td>13071292423</td>
-            <td>湖北省武汉市北京斯托赫中科技有限公司</td>
-            <td>公司管理员</td>
-            <td><i class="fa fa-close delete-style"></i></td>
-        </tr>
-        <tr>
-            <td>用户名</td>
-            <td>13071292423</td>
-            <td>湖北省武汉市北京斯托赫中科技有限公司</td>
-            <td>普通员工</td>
-            <td><i class="fa fa-close delete-style"></i></td>
+        <tbody data-sessionId = "<?=$_SESSION['user']['id']?>">
+        <tr ng-repeat="list in userList">
+            <td>{{list.name}}</td>
+            <td>{{list.phone}}</td>
+            <td>{{list.company}}</td>
+            <td>{{list.role}}</td>
+            <td><span ng-click="update($index)" data-toggle="modal" class="edit-color" data-target="#edit_user">修改</span><i class="fa fa-close delete-style" ng-click="delete($index)" ng-show="list.id != sessionId"></i></td>
         </tr>
         </tbody>
     </table>
-    <ul class="paging">
-        <li class="page pull-left c-color direction">&laquo;</li>
-        <li class="page c-color c-border pull-left">1</li>
-        <li class="page c-color c-border pull-left">2</li>
-        <li class="page c-color c-border pull-left cur-page-c">3</li>
-        <li class="page c-color c-border pull-left">4</li>
-        <li class="page c-color c-border pull-left">5</li>
-        <li class="page pull-left c-color direction">&raquo;</li>
-    </ul>
-    <span class="c-color pull-right">共13页</span>
+    <div class="page-box add-page-box-margin">
+        <div class="page-search-box">
+            <ul>
+                <li class="page-common" ng-click="previousPage()">上一页</li>
+                <li class="page-common" ng-click="nextPage()">下一页</li>
+            </ul>
+            <div class="list-search"><input type="text" ng-model="keywords" placeholder="按角色或用户名搜索"/><i class="fa fa-search" ng-click="search()"></i></div>
+        </div>
+        <div>
+            <input class="page-text" type="text" ng-model="page">
+            <span class="go-page-common page-margin" ng-click="goPageList()">GO</span>
+            <span class="total-color page-margin">当前页:{{currentPage}}</span>
+            <span class="total-color">共{{totalPage}}页</span>
+        </div>
+    </div>
+    <!--    模态框-->
+    <div class="modal fade" id="edit_user" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="input-group add-div-margin">
+                        <span class="input-group-addon">用户名</span>
+                        <input type="text" class="form-control" ng-model="userMsg.name"/>
+                    </div>
+                    <div class="input-group add-div-margin">
+                        <span class="input-group-addon">手机号</span>
+                        <input type="text" class="form-control" ng-model="userMsg.phone"/>
+                    </div>
+                    <div class="input-group add-div-margin">
+                        <span class="input-group-addon">角&nbsp;&nbsp;&nbsp;色</span>
+                        <select class="form-control" ng-init="userMsg.role = roleMsg[0]" ng-model="userMsg.role" ng-options="role for role in roleMsg"></select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" ng-click="submitUser()">提交更改</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <div id="confirm_modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body">确定删除该用户吗？</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" ng-click="confirmFn()">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
